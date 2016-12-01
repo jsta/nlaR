@@ -4,9 +4,17 @@
 \alias{nla_get}
 \title{nla_get}
 \usage{
-nla_get()
+nla_get(dest_folder = NA)
+}
+\arguments{
+\item{dest_folder}{file.path optional will default to the location returned by \code{\link[rappdirs]{user_data_dir}}.}
 }
 \description{
-nla_get
+Retrieves NLA flat files.
+}
+\examples{
+\dontrun{
+nla_get()
+}
 }
 

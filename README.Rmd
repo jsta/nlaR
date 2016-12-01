@@ -1,0 +1,61 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# nlaR
+
+[![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
+
+The goal of nlaR is to provide an R interface to the National Lakes Assessment data. At this point it only serves the 2007 data.
+
+## Installation
+
+You can install nlaR from Github with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("jsta/nlaR")
+```
+
+## Load package
+
+```{r }
+library(nlaR)
+```
+
+## Retrieve data from EPA Website
+
+Data is stored in the location returned by `rappdirs::user_data_dir()`
+
+```{r eval=FALSE}
+nla_get()
+```
+
+## Compile to `rds` object
+
+```{r eval=FALSE}
+nla_compile()
+```
+
+## Load data from local machine
+
+```{r }
+dt <- nla_load()
+```
+
+## View NLA tables
+
+```{r }
+names(dt)
+head(dt$MeanDO_Data)
+```
