@@ -1,0 +1,11 @@
+Package: nlaR
+Title: R interface to the National Lakes Assessment
+Version: 0.1
+Authors@R: person("Joseph", "Stachelek", email = "stachel2@msu.edu", role = c("aut", "cre"))
+Description: R interface to the National Lakes Assessment
+Depends:
+    R (>= 3.3.2)
+License: GPL > 2
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 5.0.1
