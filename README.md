@@ -93,3 +93,19 @@ head(dt$MeanDO_Data)
 #> 5 NLA06608-0003        2 9.000000
 #> 6 NLA06608-0004        1 6.666667
 ```
+
+Map NLA lakes
+-------------
+
+``` r
+library(sp)
+library(maps)
+
+sp::coordinates(dt$SampledLakeInformation) <- ~ LON_DD + LAT_DD
+map("usa")
+points(dt$SampledLakeInformation,
+       col = factor(dt$SampledLakeInformation$URBAN))
+axis(1); axis(2)
+```
+
+![](images/map%20lakes-1.png)

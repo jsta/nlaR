@@ -8,7 +8,7 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "images/"
 )
 ```
 
@@ -58,4 +58,18 @@ dt <- nla_load()
 ```{r }
 names(dt)
 head(dt$MeanDO_Data)
+```
+
+## Map NLA lakes
+
+```{r map lakes}
+library(sp)
+library(maps)
+
+sp::coordinates(dt$SampledLakeInformation) <- ~ LON_DD + LAT_DD
+map("usa")
+points(dt$SampledLakeInformation,
+       col = factor(dt$SampledLakeInformation$URBAN))
+axis(1); axis(2)
+
 ```
