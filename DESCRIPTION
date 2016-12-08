@@ -1,6 +1,6 @@
 Package: nlaR
 Title: R interface to the National Lakes Assessment
-Version: 0.1
+Version: 0.2
 Authors@R: person("Joseph", "Stachelek", email = "stachel2@msu.edu", role = c("aut", "cre"))
 Description: R interface to the National Lakes Assessment.
 Depends:
