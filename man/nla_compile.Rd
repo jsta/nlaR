@@ -4,10 +4,10 @@
 \alias{nla_compile}
 \title{nla_compile}
 \usage{
-nla_compile(version = "2007")
+nla_compile(year)
 }
 \arguments{
-\item{version}{optional version id}
+\item{year}{numeric choice of 2007 or 2012.}
 }
 \value{
 rds
@@ -17,7 +17,7 @@ nla_compile
 }
 \examples{
 \dontrun{
-nla_compile()
+nla_compile(2012)
 }
 }
 

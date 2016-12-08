@@ -4,7 +4,10 @@
 \alias{nla_load}
 \title{nla_load}
 \usage{
-nla_load()
+nla_load(year)
+}
+\arguments{
+\item{year}{numeric choice of 2007 or 2012.}
 }
 \value{
 list
@@ -14,7 +17,7 @@ nla_load
 }
 \examples{
 \dontrun{
-dt <- nla_load()
+dt <- nla_load(2012)
 }
 }
 

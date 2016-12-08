@@ -4,9 +4,11 @@
 \alias{nla_get}
 \title{nla_get}
 \usage{
-nla_get(dest_folder = NA)
+nla_get(year, dest_folder = NA)
 }
 \arguments{
+\item{year}{numeric choice of 2007 or 2012.}
+
 \item{dest_folder}{file.path optional will default to the location returned by \code{\link[rappdirs]{user_data_dir}}.}
 }
 \description{
