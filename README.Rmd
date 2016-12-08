@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 [![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
 
-The goal of nlaR is to provide an R interface to the National Lakes Assessment data. At this point it only serves the 2007 data.
+The goal of nlaR is to provide an R interface to the National Lakes Assessment data. At this point it serves either the 2007 or 2012 data (see examples below).
 
 ## Installation
 
@@ -38,38 +38,50 @@ library(nlaR)
 Data is stored in the location returned by `rappdirs::user_data_dir()`
 
 ```{r eval=FALSE}
-nla_get()
+nla_get(2012)
 ```
 
 ## Compile to `rds` object
 
 ```{r eval=FALSE}
-nla_compile()
+nla_compile(2012)
 ```
 
 ## Load data from local machine
 
 ```{r }
-dt <- nla_load()
+dt <- nla_load(2012)
 ```
 
 ## View NLA tables
 
 ```{r }
 names(dt)
-head(dt$MeanDO_Data)
+head(dt$phytocnt)
 ```
 
-## Map NLA lakes
+## Compare 2007 and 2012 NLA lakes
 
 ```{r map lakes}
 library(sp)
 library(maps)
 
+par(mfrow = c(1, 2))
+
+dt <- nla_load(2007)
 sp::coordinates(dt$SampledLakeInformation) <- ~ LON_DD + LAT_DD
 map("usa")
+title("NLA 2007")
 points(dt$SampledLakeInformation,
-       col = factor(dt$SampledLakeInformation$URBAN))
+       col = factor(dt$SampledLakeInformation$URBAN), cex = 0.5)
 axis(1); axis(2)
 
+
+dt <- nla_load(2012)
+sp::coordinates(dt$wide_siteinfo) <- ~ LON_DD83 + LAT_DD83
+map("usa")
+title("NLA 2012")
+points(dt$wide_siteinfo,
+       col = factor(dt$wide_siteinfo$URBAN), cex = 0.5)
+axis(1); axis(2)
 ```

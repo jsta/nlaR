@@ -9,3 +9,9 @@ get_if_not_exists <- function(url, destfile){
     message(paste0("A local copy of ", url, " already exists on disk"))
   }
 }
+
+valid_year <- function(year){
+  if(!(year %in% c(2007, 2012))){
+    error("nlaR only serves the 2007 and 2012 data")
+  }
+}
