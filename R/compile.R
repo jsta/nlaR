@@ -17,7 +17,7 @@ nla_compile <- function(year){
 
   outpath <- file.path(nla_path(), paste0("data_", year, ".rds"))
 
-  saveRDS(res, outpath)
+  saveRDS(res, outpath, compress = "xz")
   message(paste0("NLA ", year, " compiled to ", outpath))
 }
 
