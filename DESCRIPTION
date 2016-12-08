@@ -6,6 +6,8 @@ Description: R interface to the National Lakes Assessment.
 Depends:
     R (>= 3.3.2)
 Imports: rappdirs
+URL: https://github.com/jsta/nlaR
+BugReports: https://github.com/jsta/nlaR/issues
 License: GPL
 Encoding: UTF-8
 LazyData: true

@@ -21,7 +21,7 @@ nla_get <- function(year, dest_folder = NA){
     files   <- "nla2007_alldata.zip"
 
     invisible(lapply(files, function(x) get_if_not_exists(paste0(baseurl, x),
-                                                          paste0(nla_path(), x))))
+                                        paste0(nla_path(), x))))
 
     unzip(paste0(nla_path(), files), exdir = nla_path())
   }
@@ -41,7 +41,7 @@ nla_get <- function(year, dest_folder = NA){
       "nla2012_chla_wide.csv")
 
     invisible(lapply(files, function(x) get_if_not_exists(paste0(baseurl, x),
-                                                          paste0(nla_path(), x))))
+                                        paste0(nla_path(), x))))
 
     baseurl <- "https://www.epa.gov/sites/production/files/2016-12/"
     files <- c(
@@ -59,7 +59,7 @@ nla_get <- function(year, dest_folder = NA){
       "nla2012_zooptaxa_wide_10272015.csv")
 
     invisible(lapply(files, function(x) get_if_not_exists(paste0(baseurl, x),
-                                                          paste0(nla_path(), x))))
+                                        paste0(nla_path(), x))))
   }
 
 }

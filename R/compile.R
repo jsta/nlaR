@@ -32,11 +32,11 @@ nla_ingest <- function(year){
   res_names <- sapply(nla_files, function(x) strsplit(x, "_"))
   junk_name_pos <- sapply(res_names, function(x) unlist(grep("0", x)))
 
-  good_name_pos <-  sapply(1:length(res_names), function(x)
-                      !(1:length(unlist(res_names[x])) %in% unlist(junk_name_pos[x],
+  good_name_pos <-  sapply(seq_along(res_names), function(x)
+                      !(seq_along(unlist(res_names[x])) %in% unlist(junk_name_pos[x],
                       use.names = FALSE)))
 
-  res_names <- sapply(1:length(res_names), function(x)
+  res_names <- sapply(seq_along(res_names), function(x)
                 unlist(res_names[x])[unlist(good_name_pos[x])])
 
   # res_names <- sapply(res_names, function(x) x[2:(length(x) - 1)])
