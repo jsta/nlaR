@@ -27,7 +27,13 @@ nla_ingest <- function(year){
 
   nla_files <- nla_files[grep(year, nla_files)]
 
+  # options(scipen = 999)
+  # options("digits" = 15)
   res <- lapply(nla_files, function(x) read.csv(x, stringsAsFactors = FALSE))
+  if(year == 2012){
+    res[[16]]$RCHCODE <- suppressWarnings(
+      trimws(format(as.numeric(res[[16]]$RCHCODE), scientific = FALSE)))
+  }
 
   res_names <- sapply(nla_files, function(x) strsplit(x, "_"))
   junk_name_pos <- sapply(res_names, function(x) unlist(grep("0", x)))
