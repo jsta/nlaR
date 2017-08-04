@@ -23,7 +23,7 @@ nla_get <- function(year, dest_folder = NA){
     invisible(lapply(files, function(x) get_if_not_exists(paste0(baseurl, x),
                                         paste0(nla_path(), x))))
 
-    unzip(paste0(nla_path(), files), exdir = nla_path())
+    unzip(file.path(nla_path(), files), exdir = nla_path())
   }
 
   if(year == 2012){

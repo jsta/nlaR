@@ -12,5 +12,5 @@
 nla_load <- function(year){
   valid_year(year)
 
-  readRDS(paste0(nla_path(), "data_", year, ".rds"))
+  readRDS(file.path(nla_path(), paste0("data_", year, ".rds")))
 }

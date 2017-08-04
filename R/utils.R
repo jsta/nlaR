@@ -1,5 +1,5 @@
 
-nla_path <- function() paste0(rappdirs::user_data_dir(appname = "nlaR"), .Platform$file.sep)
+nla_path <- function() paste0(rappdirs::user_data_dir(appname = "nlaR"))
 
 get_if_not_exists <- function(url, destfile){
   if(!file.exists(destfile)){
