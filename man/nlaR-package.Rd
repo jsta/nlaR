@@ -2,8 +2,8 @@
 % Please edit documentation in R/nlaR-package.R
 \docType{package}
 \name{nlaR-package}
-\alias{nla}
 \alias{nlaR-package}
+\alias{nla}
 \title{R interface to the National Lakes Assessment}
 \description{
 R interface to the National Lakes Assessment
@@ -11,4 +11,3 @@ R interface to the National Lakes Assessment
 \author{
 \email{stachel2@msu.edu}
 }
-

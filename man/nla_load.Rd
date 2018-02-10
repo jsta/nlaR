@@ -20,4 +20,3 @@ nla_load
 dt <- nla_load(2012)
 }
 }
-

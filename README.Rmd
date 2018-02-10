@@ -60,7 +60,9 @@ names(dt)
 head(dt$phytocnt)
 ```
 
-## Compare 2007 and 2012 NLA lakes
+## Example
+
+### Compare 2007 and 2012 NLA lakes
 
 ```{r map lakes}
 library(sp)
