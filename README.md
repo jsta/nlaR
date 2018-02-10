@@ -3,7 +3,7 @@
 nlaR
 ====
 
-[![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable) [![CRAN status](http://www.r-pkg.org/badges/version/nlaR)](https://cran.r-project.org/package=nlaR) [![Travis-CI Build Status](https://travis-ci.org/jsta/nlaR.svg?branch=master)](https://travis-ci.org/jsta/nlaR)
 
 The goal of nlaR is to provide an R interface to the National Lakes Assessment data. At this point it serves either the 2007 or 2012 data (see examples below).
 
@@ -67,8 +67,10 @@ head(dt$phytocnt)
 #> 6        2/12/2014 6160        PHYL    4095       TOTAL_AREA 283.5287
 ```
 
-Compare 2007 and 2012 NLA lakes
--------------------------------
+Example
+-------
+
+### Compare 2007 and 2012 NLA lakes
 
 ``` r
 library(sp)
