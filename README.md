@@ -73,6 +73,9 @@ See [vignettes](https://jsta.github.io/nlaR).
 References
 ----------
 
--   <https://www.epa.gov/national-aquatic-resource-surveys/nla>
+-   National Lakes Assessment EPA [landing page](https://www.epa.gov/national-aquatic-resource-surveys/nla)
+
+-   Water quality metadata
+-   [2012](https://www.epa.gov/sites/production/files/2016-12/nla2012_waterchem_meta.txt)
 
 -   Stoddard, J.L., Van Sickle, J., Herlihy, A.T., Brahney, J., Paulsen, S., Peck, D.V., Mitchell, R. and Pollard, A.I., 2016. Continental-scale increase in lake and stream phosphorus: Are oligotrophic systems disappearing in the United States?. Environmental Science & Technology, 50(7), pp.3409-3415. [10.1021/acs.est.5b05950](https://doi.org/10.1021/acs.est.5b05950)
