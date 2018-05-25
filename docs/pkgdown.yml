@@ -1,0 +1,7 @@
+pandoc: 1.19.2.4
+pkgdown: 1.0.0
+pkgdown_sha: ~
+articles:
+  comparison_2007-2012: comparison_2007-2012.html
+  summary_2012: summary_2012.html
+
