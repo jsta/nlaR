@@ -1,0 +1,48 @@
+---
+title: "Summary of 2012 Surveys"
+author: "Joseph Stachelek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Summary of 2012 Surveys}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r message=FALSE}
+library(dplyr)
+library(magrittr)
+
+library(nlaR)
+```
+
+```{r load_data}
+dt <- tryCatch(nla_load(2012), error = function(e){ 
+        nla_get(2012)
+        nla_compile(2012)
+        nla_load(2012)}
+      )
+```
+
+```{r }
+tp <- select(dt$waterchem_wide, PTL_RESULT, UID) %>%
+      left_join(select(dt$wide_siteinfo, SITE_ID, UID)) %>%
+      group_by(SITE_ID) %>%
+      summarize(tp = median(PTL_RESULT))
+
+chl  <- select(dt$chla_wide, CHLX_RESULT, UID)  %>%
+      left_join(select(dt$wide_siteinfo, SITE_ID, UID)) %>%
+      group_by(SITE_ID) %>%
+      summarize(chl = median(CHLX_RESULT))
+
+res <- left_join(tp, chl)
+
+skimr::skim(res)
+```

@@ -1,0 +1,50 @@
+---
+title: "Compare 2007 and 2012 lake condition"
+author: "Joseph Stachelek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Compare 2007 and 2012 lake condition}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r }
+library(nlaR)
+```
+
+```{r map lakes}
+library(sp)
+library(maps)
+
+par(mfrow = c(1, 2))
+
+dt <- tryCatch(nla_load(2007), error = function(e){ 
+        nla_get(2007)
+        nla_compile(2007)
+        nla_load(2007)}
+      )
+
+sp::coordinates(dt$SampledLakeInformation) <- ~ LON_DD + LAT_DD
+map("usa")
+title("NLA 2007")
+points(dt$SampledLakeInformation,
+       col = factor(dt$SampledLakeInformation$URBAN), cex = 0.5)
+axis(1); axis(2)
+
+
+dt <- nla_load(2012)
+sp::coordinates(dt$wide_siteinfo) <- ~ LON_DD83 + LAT_DD83
+map("usa")
+title("NLA 2012")
+points(dt$wide_siteinfo,
+       col = factor(dt$wide_siteinfo$URBAN), cex = 0.5)
+axis(1); axis(2)
+```

@@ -29,63 +29,47 @@ You can install nlaR from Github with:
 devtools::install_github("jsta/nlaR")
 ```
 
-## Load package
+## Usage
+
+### Load package
 
 ```{r }
 library(nlaR)
 ```
 
-## Retrieve data from EPA Website
+### Retrieve data from EPA Website
 
-Data is stored in the location returned by `rappdirs::user_data_dir()`
+> Data is stored in the location returned by `rappdirs::user_data_dir()`
 
 ```{r eval=FALSE}
 nla_get(2012)
 ```
 
-## Compile to `rds` object
+### Compile to `rds` object
 
 ```{r eval=FALSE}
 nla_compile(2012)
 ```
 
-## Load data from local machine
+### Load data from local machine
 
 ```{r }
 dt <- nla_load(2012)
 ```
 
-## View NLA tables
+### View NLA tables
 
 ```{r }
 names(dt)
 head(dt$phytocnt)
 ```
 
-## Example
+## More Examples
 
-### Compare 2007 and 2012 NLA lakes
+See [vignettes](https://jsta.github.io/nlaR).
 
-```{r map lakes}
-library(sp)
-library(maps)
+## References
 
-par(mfrow = c(1, 2))
+* https://www.epa.gov/national-aquatic-resource-surveys/nla
 
-dt <- nla_load(2007)
-sp::coordinates(dt$SampledLakeInformation) <- ~ LON_DD + LAT_DD
-map("usa")
-title("NLA 2007")
-points(dt$SampledLakeInformation,
-       col = factor(dt$SampledLakeInformation$URBAN), cex = 0.5)
-axis(1); axis(2)
-
-
-dt <- nla_load(2012)
-sp::coordinates(dt$wide_siteinfo) <- ~ LON_DD83 + LAT_DD83
-map("usa")
-title("NLA 2012")
-points(dt$wide_siteinfo,
-       col = factor(dt$wide_siteinfo$URBAN), cex = 0.5)
-axis(1); axis(2)
-```
+* Stoddard, J.L., Van Sickle, J., Herlihy, A.T., Brahney, J., Paulsen, S., Peck, D.V., Mitchell, R. and Pollard, A.I., 2016. Continental-scale increase in lake and stream phosphorus: Are oligotrophic systems disappearing in the United States?. Environmental Science & Technology, 50(7), pp.3409-3415. [10.1021/acs.est.5b05950](https://doi.org/10.1021/acs.est.5b05950)
