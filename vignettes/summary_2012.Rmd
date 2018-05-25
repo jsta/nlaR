@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 ```{r message=FALSE}
 library(dplyr)
 library(magrittr)
+library(purrr)
 
 library(nlaR)
 ```
@@ -33,16 +34,22 @@ dt <- tryCatch(nla_load(2012), error = function(e){
 
 ```{r }
 tp <- select(dt$waterchem_wide, PTL_RESULT, UID) %>%
-      left_join(select(dt$wide_siteinfo, SITE_ID, UID)) %>%
+      left_join(select(dt$wide_siteinfo, AREA_HA, SITE_ID, UID)) %>%
       group_by(SITE_ID) %>%
-      summarize(tp = median(PTL_RESULT))
+      summarize(tp = median(PTL_RESULT), area = median(AREA_HA) / 100)
 
 chl  <- select(dt$chla_wide, CHLX_RESULT, UID)  %>%
-      left_join(select(dt$wide_siteinfo, SITE_ID, UID)) %>%
-      group_by(SITE_ID) %>%
-      summarize(chl = median(CHLX_RESULT))
+        left_join(select(dt$wide_siteinfo, SITE_ID, UID)) %>%
+        group_by(SITE_ID) %>%
+        summarize(chl = median(CHLX_RESULT))
 
-res <- left_join(tp, chl)
+secchi  <- select(dt$secchi, SECCHI, SITE_ID)  %>%
+           group_by(SITE_ID) %>%
+           summarize(secchi = median(SECCHI))
+
+res <- reduce(list(tp, chl, secchi), left_join)
+res <- left_join(res, select(dt$wide_phab, depth = DEPTH_AT_STATION, SITE_ID))
+
 
 skimr::skim(res)
 ```

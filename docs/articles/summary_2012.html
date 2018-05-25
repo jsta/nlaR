@@ -93,6 +93,7 @@
     
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
 <span class="kw">library</span>(magrittr)
+<span class="kw">library</span>(purrr)
 
 <span class="kw">library</span>(nlaR)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dt &lt;-<span class="st"> </span><span class="kw">tryCatch</span>(<span class="kw"><a href="../reference/nla_load.html">nla_load</a></span>(<span class="dv">2012</span>), <span class="dt">error =</span> <span class="cf">function</span>(e){ 
@@ -101,36 +102,50 @@
         <span class="kw"><a href="../reference/nla_load.html">nla_load</a></span>(<span class="dv">2012</span>)}
       )</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tp &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(dt<span class="op">$</span>waterchem_wide, PTL_RESULT, UID) <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/join.html">left_join</a></span>(<span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(dt<span class="op">$</span>wide_siteinfo, SITE_ID, UID)) <span class="op">%&gt;%</span>
+<span class="st">      </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/join.html">left_join</a></span>(<span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(dt<span class="op">$</span>wide_siteinfo, AREA_HA, SITE_ID, UID)) <span class="op">%&gt;%</span>
 <span class="st">      </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(SITE_ID) <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="dt">tp =</span> <span class="kw">median</span>(PTL_RESULT))
+<span class="st">      </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="dt">tp =</span> <span class="kw">median</span>(PTL_RESULT), <span class="dt">area =</span> <span class="kw">median</span>(AREA_HA) <span class="op">/</span><span class="st"> </span><span class="dv">100</span>)
 <span class="co">#&gt; Joining, by = "UID"</span>
 
 chl  &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(dt<span class="op">$</span>chla_wide, CHLX_RESULT, UID)  <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/join.html">left_join</a></span>(<span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(dt<span class="op">$</span>wide_siteinfo, SITE_ID, UID)) <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(SITE_ID) <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="dt">chl =</span> <span class="kw">median</span>(CHLX_RESULT))
+<span class="st">        </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/join.html">left_join</a></span>(<span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(dt<span class="op">$</span>wide_siteinfo, SITE_ID, UID)) <span class="op">%&gt;%</span>
+<span class="st">        </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(SITE_ID) <span class="op">%&gt;%</span>
+<span class="st">        </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="dt">chl =</span> <span class="kw">median</span>(CHLX_RESULT))
 <span class="co">#&gt; Joining, by = "UID"</span>
 
-res &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/join.html">left_join</a></span>(tp, chl)
+secchi  &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(dt<span class="op">$</span>secchi, SECCHI, SITE_ID)  <span class="op">%&gt;%</span>
+<span class="st">           </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(SITE_ID) <span class="op">%&gt;%</span>
+<span class="st">           </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="dt">secchi =</span> <span class="kw">median</span>(SECCHI))
+
+res &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/reduce">reduce</a></span>(<span class="kw">list</span>(tp, chl, secchi), left_join)
 <span class="co">#&gt; Joining, by = "SITE_ID"</span>
+<span class="co">#&gt; Joining, by = "SITE_ID"</span>
+res &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/join.html">left_join</a></span>(res, <span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(dt<span class="op">$</span>wide_phab, <span class="dt">depth =</span> DEPTH_AT_STATION, SITE_ID))
+<span class="co">#&gt; Joining, by = "SITE_ID"</span>
+
 
 skimr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/skimr/topics/skim">skim</a></span>(res)
 <span class="co">#&gt; Skim summary statistics</span>
-<span class="co">#&gt;  n obs: 1130 </span>
-<span class="co">#&gt;  n variables: 3 </span>
+<span class="co">#&gt;  n obs: 20838 </span>
+<span class="co">#&gt;  n variables: 6 </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Variable type: character </span>
-<span class="co">#&gt;  variable missing complete    n min max empty n_unique</span>
-<span class="co">#&gt;   SITE_ID       0     1130 1130  12  13     0     1130</span>
+<span class="co">#&gt;  variable missing complete     n min max empty n_unique</span>
+<span class="co">#&gt;   SITE_ID       0    20838 20838  12  13     0     1130</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Variable type: numeric </span>
-<span class="co">#&gt;  variable missing complete    n   mean     sd p0   p25   p50   p75    p100</span>
-<span class="co">#&gt;       chl       5     1125 1130  26.48  55.51  0  2.92  7.54 25.44  764.64</span>
-<span class="co">#&gt;        tp       0     1130 1130 117.08 278.3   4 20    39.6  95.38 3636   </span>
-<span class="co">#&gt;      hist</span>
-<span class="co">#&gt;  ▇▁▁▁▁▁▁▁</span>
-<span class="co">#&gt;  ▇▁▁▁▁▁▁▁</span></code></pre></div>
+<span class="co">#&gt;  variable missing complete     n   mean     sd    p0   p25   p50    p75</span>
+<span class="co">#&gt;      area       0    20838 20838   4.62  39.54 0.01   0.11  0.3    1.05</span>
+<span class="co">#&gt;       chl      90    20748 20838  26.75  53.16 0      3.03  8     26.8 </span>
+<span class="co">#&gt;     depth    9051    11787 20838   1.6    1.71 0      0.7   1.1    1.9 </span>
+<span class="co">#&gt;    secchi    1238    19600 20838   2.08   2.25 0.019  0.64  1.39   2.83</span>
+<span class="co">#&gt;        tp       0    20838 20838 120.94 286.04 4     21    41    100   </span>
+<span class="co">#&gt;     p100     hist</span>
+<span class="co">#&gt;  1674.9  ▇▁▁▁▁▁▁▁</span>
+<span class="co">#&gt;   764.64 ▇▁▁▁▁▁▁▁</span>
+<span class="co">#&gt;    34.1  ▇▁▁▁▁▁▁▁</span>
+<span class="co">#&gt;    28    ▇▂▁▁▁▁▁▁</span>
+<span class="co">#&gt;  3636    ▇▁▁▁▁▁▁▁</span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
