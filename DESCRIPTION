@@ -16,6 +16,8 @@ Suggests: knitr,
     rmarkdown,
     dplyr,
     magrittr,
-    skimr
+    skimr,
+    sp,
+    maps
 Remotes: ropenscilabs/skimr
 VignetteBuilder: knitr
