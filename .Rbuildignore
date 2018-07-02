@@ -7,3 +7,4 @@ images
 vignettes/summary_2012.Rmd
 vignettes/comparison_2007-2012.Rmd
 ^docs$
+^cran-comments\.md$
