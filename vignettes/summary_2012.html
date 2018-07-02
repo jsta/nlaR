@@ -1,0 +1,101 @@
+---
+title: "Summary of 2012 Surveys"
+author: "Joseph Stachelek"
+date: "2018-07-02"
+output: 
+  html_document:
+    fig_caption: true
+---
+
+
+```r
+library(dplyr)
+library(magrittr)
+library(purrr)
+
+library(nlaR)
+```
+
+
+```r
+dt <- tryCatch(nla_load(2012), error = function(e){ 
+        nla_get(2012)
+        nla_compile(2012)
+        nla_load(2012)}
+      )
+```
+
+
+```r
+tp <- select(dt$waterchem_wide, PTL_RESULT, UID) %>%
+      left_join(select(dt$wide_siteinfo, AREA_HA, SITE_ID, UID)) %>%
+      group_by(SITE_ID) %>%
+      summarize(tp = median(PTL_RESULT), area = median(AREA_HA) / 100)
+```
+
+```
+## Joining, by = "UID"
+```
+
+```r
+chl  <- select(dt$chla_wide, CHLX_RESULT, UID)  %>%
+        left_join(select(dt$wide_siteinfo, SITE_ID, UID)) %>%
+        group_by(SITE_ID) %>%
+        summarize(chl = median(CHLX_RESULT))
+```
+
+```
+## Joining, by = "UID"
+```
+
+```r
+secchi  <- select(dt$secchi, SECCHI, SITE_ID)  %>%
+           group_by(SITE_ID) %>%
+           summarize(secchi = median(SECCHI))
+
+res <- reduce(list(tp, chl, secchi), left_join)
+```
+
+```
+## Joining, by = "SITE_ID"
+```
+
+```
+## Joining, by = "SITE_ID"
+```
+
+```r
+res <- left_join(res, select(dt$wide_phab, depth = DEPTH_AT_STATION, SITE_ID))
+```
+
+```
+## Joining, by = "SITE_ID"
+```
+
+```r
+skimr::skim(res)
+```
+
+```
+## Skim summary statistics
+##  n obs: 20838 
+##  n variables: 6 
+## 
+## Variable type: character 
+##  variable missing complete     n min max empty n_unique
+##   SITE_ID       0    20838 20838  12  13     0     1130
+## 
+## Variable type: numeric 
+##  variable missing complete     n   mean     sd    p0   p25   p50    p75
+##      area       0    20838 20838   4.62  39.54 0.01   0.11  0.3    1.05
+##       chl      90    20748 20838  26.75  53.16 0      3.03  8     26.8 
+##     depth    9051    11787 20838   1.6    1.71 0      0.7   1.1    1.9 
+##    secchi    1238    19600 20838   2.08   2.25 0.019  0.64  1.39   2.83
+##        tp       0    20838 20838 120.94 286.04 4     21    41    100   
+##     p100     hist
+##  1674.9  ▇▁▁▁▁▁▁▁
+##   764.64 ▇▁▁▁▁▁▁▁
+##    34.1  ▇▁▁▁▁▁▁▁
+##    28    ▇▂▁▁▁▁▁▁
+##  3636    ▇▁▁▁▁▁▁▁
+```
