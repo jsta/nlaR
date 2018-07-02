@@ -1,5 +1,5 @@
 
-#' nla_compile
+#' Compile NLA data for on-disk storage
 #'
 #' @param year numeric choice of 2007 or 2012.
 #'

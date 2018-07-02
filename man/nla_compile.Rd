@@ -2,7 +2,7 @@
 % Please edit documentation in R/compile.R
 \name{nla_compile}
 \alias{nla_compile}
-\title{nla_compile}
+\title{Compile NLA data for on-disk storage}
 \usage{
 nla_compile(year)
 }
@@ -13,7 +13,7 @@ nla_compile(year)
 rds
 }
 \description{
-nla_compile
+Compile NLA data for on-disk storage
 }
 \examples{
 \dontrun{

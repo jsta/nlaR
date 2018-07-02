@@ -2,7 +2,7 @@
 % Please edit documentation in R/load.R
 \name{nla_load}
 \alias{nla_load}
-\title{nla_load}
+\title{Load NLA data into current R session}
 \usage{
 nla_load(year)
 }
@@ -13,7 +13,7 @@ nla_load(year)
 list
 }
 \description{
-nla_load
+Load NLA data into current R session
 }
 \examples{
 \dontrun{

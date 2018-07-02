@@ -1,4 +1,4 @@
-#' nla_get
+#' Download NLA data from USEPA
 #'
 #' @export
 #' @description Retrieves NLA flat files.

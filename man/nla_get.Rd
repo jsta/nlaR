@@ -2,7 +2,7 @@
 % Please edit documentation in R/get.R
 \name{nla_get}
 \alias{nla_get}
-\title{nla_get}
+\title{Download NLA data from USEPA}
 \usage{
 nla_get(year, dest_folder = NA)
 }

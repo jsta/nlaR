@@ -1,6 +1,6 @@
 
 
-#' nla_load
+#' Load NLA data into current R session
 #'
 #' @return list
 #' @export
