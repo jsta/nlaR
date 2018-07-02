@@ -18,6 +18,7 @@ Suggests: knitr,
     magrittr,
     skimr,
     sp,
-    maps
+    maps,
+    R.rsp
 Remotes: ropenscilabs/skimr
-VignetteBuilder: knitr
+VignetteBuilder: R.rsp, knitr

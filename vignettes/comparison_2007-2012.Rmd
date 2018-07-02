@@ -2,19 +2,11 @@
 title: "Compare 2007 and 2012 lake condition"
 author: "Joseph Stachelek"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Compare 2007 and 2012 lake condition}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output: 
+  html_document:
+    fig_caption: true
+    self_contained: true
 ---
-
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
 
 ```{r }
 library(nlaR)

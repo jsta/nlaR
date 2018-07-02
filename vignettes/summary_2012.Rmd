@@ -2,19 +2,10 @@
 title: "Summary of 2012 Surveys"
 author: "Joseph Stachelek"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Summary of 2012 Surveys}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output: 
+  html_document:
+    fig_caption: true
 ---
-
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
 
 ```{r message=FALSE}
 library(dplyr)

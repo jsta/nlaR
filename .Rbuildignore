@@ -4,3 +4,6 @@
 ^README-.*\.png$
 images
 ^\.travis\.yml$
+vignettes/summary_2012.Rmd
+vignettes/comparison_2007-2012.Rmd
+^docs$
