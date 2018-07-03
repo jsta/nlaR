@@ -1,8 +1,9 @@
 Package: nlaR
-Title: R interface to the National Lakes Assessment
-Version: 0.2
+Title: Interface to the National Lakes Assessment
+Version: 0.3
 Authors@R: person("Joseph", "Stachelek", email = "stachel2@msu.edu", role = c("aut", "cre"))
-Description: R interface to the National Lakes Assessment.
+Description: Client for programmatic access to the National Lakes Assessment 
+  database <https://www.epa.gov/national-aquatic-resource-surveys/nla>.
 Depends:
     R (>= 3.0.0)
 Imports: rappdirs
