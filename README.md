@@ -34,12 +34,6 @@ library(nlaR)
 nla_get(2012)
 ```
 
-### Compile to `rds` object
-
-``` r
-nla_compile(2012)
-```
-
 ### Load data from local machine
 
 ``` r
