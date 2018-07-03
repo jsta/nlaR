@@ -2,6 +2,7 @@
 #' Compile NLA data for on-disk storage
 #'
 #' @param year numeric choice of 2007 or 2012.
+#' @param local_path folder path to raw downloads from `nla_get`
 #'
 #' @return rds
 #' @export
@@ -9,11 +10,11 @@
 #' @examples \dontrun{
 #' nla_compile(2012)
 #' }
-nla_compile <- function(year){
+nla_compile <- function(year, local_path){
 
   valid_year(year)
 
-  res <- nla_ingest(year)
+  res <- nla_ingest(year, local_path)
 
   outpath <- file.path(nla_path(), paste0("data_", year, ".rds"))
 
@@ -21,8 +22,8 @@ nla_compile <- function(year){
   message(paste0("NLA ", year, " compiled to ", outpath))
 }
 
-nla_ingest <- function(year){
-  nla_files <- list.files(nla_path(), ".csv", full.names = TRUE,
+nla_ingest <- function(year, local_path){
+  nla_files <- list.files(local_path, ".csv", full.names = TRUE,
                           include.dirs = TRUE)
 
   nla_files <- nla_files[grep(year, nla_files)]
@@ -30,10 +31,10 @@ nla_ingest <- function(year){
   # options(scipen = 999)
   # options("digits" = 15)
   res <- lapply(nla_files, function(x) read.csv(x, stringsAsFactors = FALSE))
-  if(year == 2012){
-    res[[16]]$RCHCODE <- suppressWarnings(
-      trimws(format(as.numeric(res[[16]]$RCHCODE), scientific = FALSE)))
-  }
+  # if(year == 2012){
+  #   res[[16]]$RCHCODE <- suppressWarnings(
+  #     trimws(format(as.numeric(res[[16]]$RCHCODE), scientific = FALSE)))
+  # }
 
   res_names <- sapply(nla_files, function(x) strsplit(x, "_"))
   junk_name_pos <- sapply(res_names, function(x) unlist(grep("0", x)))

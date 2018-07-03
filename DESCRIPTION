@@ -17,7 +17,7 @@ Suggests: knitr,
     dplyr,
     magrittr,
     skimr,
-    sp,
+    sf,
     maps,
     R.rsp
 Remotes: ropenscilabs/skimr

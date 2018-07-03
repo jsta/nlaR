@@ -92,32 +92,26 @@
     
     
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(nlaR)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sp)
-<span class="kw">library</span>(maps)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sf)</code></pre></div>
+<pre><code>## Linking to GEOS 3.6.2, GDAL 2.2.3, proj.4 4.9.3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(maps)
 
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
 
-dt &lt;-<span class="st"> </span><span class="kw">tryCatch</span>(<span class="kw"><a href="../reference/nla_load.html">nla_load</a></span>(<span class="dv">2007</span>), <span class="dt">error =</span> <span class="cf">function</span>(e){ 
-        <span class="kw"><a href="../reference/nla_get.html">nla_get</a></span>(<span class="dv">2007</span>)
-        <span class="kw"><a href="../reference/nla_compile.html">nla_compile</a></span>(<span class="dv">2007</span>)
-        <span class="kw"><a href="../reference/nla_load.html">nla_load</a></span>(<span class="dv">2007</span>)}
-      )
+dt &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nla_load.html">nla_load</a></span>(<span class="dv">2007</span>)
 
-sp<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/sp/topics/coordinates">coordinates</a></span>(dt<span class="op">$</span>SampledLakeInformation) &lt;-<span class="st"> </span><span class="er">~</span><span class="st"> </span>LON_DD <span class="op">+</span><span class="st"> </span>LAT_DD
+dt &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/sf/topics/st_as_sf">st_as_sf</a></span>(dt<span class="op">$</span>SampledLakeInformation, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">"LON_DD"</span>, <span class="st">"LAT_DD"</span>), <span class="dt">crs =</span> <span class="dv">4326</span>)
+
 <span class="kw"><a href="http://www.rdocumentation.org/packages/maps/topics/map">map</a></span>(<span class="st">"usa"</span>)
+<span class="kw"><a href="http://www.rdocumentation.org/packages/sf/topics/plot">plot</a></span>(dt[<span class="st">'URBAN'</span>], <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">reset =</span> <span class="ot">FALSE</span>)
 <span class="kw">title</span>(<span class="st">"NLA 2007"</span>)
-<span class="kw">points</span>(dt<span class="op">$</span>SampledLakeInformation,
-       <span class="dt">col =</span> <span class="kw">factor</span>(dt<span class="op">$</span>SampledLakeInformation<span class="op">$</span>URBAN), <span class="dt">cex =</span> <span class="fl">0.5</span>)
-<span class="kw">axis</span>(<span class="dv">1</span>); <span class="kw">axis</span>(<span class="dv">2</span>)
-
 
 dt &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nla_load.html">nla_load</a></span>(<span class="dv">2012</span>)
-sp<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/sp/topics/coordinates">coordinates</a></span>(dt<span class="op">$</span>wide_siteinfo) &lt;-<span class="st"> </span><span class="er">~</span><span class="st"> </span>LON_DD83 <span class="op">+</span><span class="st"> </span>LAT_DD83
+dt &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/sf/topics/st_as_sf">st_as_sf</a></span>(dt<span class="op">$</span>wide_siteinfo, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">"LON_DD83"</span>, <span class="st">"LAT_DD83"</span>), <span class="dt">crs =</span> <span class="dv">4326</span>)
+
 <span class="kw"><a href="http://www.rdocumentation.org/packages/maps/topics/map">map</a></span>(<span class="st">"usa"</span>)
-<span class="kw">title</span>(<span class="st">"NLA 2012"</span>)
-<span class="kw">points</span>(dt<span class="op">$</span>wide_siteinfo,
-       <span class="dt">col =</span> <span class="kw">factor</span>(dt<span class="op">$</span>wide_siteinfo<span class="op">$</span>URBAN), <span class="dt">cex =</span> <span class="fl">0.5</span>)
-<span class="kw">axis</span>(<span class="dv">1</span>); <span class="kw">axis</span>(<span class="dv">2</span>)</code></pre></div>
+<span class="kw"><a href="http://www.rdocumentation.org/packages/sf/topics/plot">plot</a></span>(dt[<span class="st">'URBAN'</span>], <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">reset =</span> <span class="ot">FALSE</span>)
+<span class="kw">title</span>(<span class="st">"NLA 2012"</span>)</code></pre></div>
 <p><img src="comparison_2007-2012_files/figure-html/map%20lakes-1.png" width="700"></p>
   </div>
 

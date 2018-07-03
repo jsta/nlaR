@@ -16,6 +16,6 @@ Retrieves NLA flat files.
 }
 \examples{
 \dontrun{
-nla_get()
+nla_get(2012)
 }
 }

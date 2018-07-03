@@ -8,35 +8,32 @@ output:
     self_contained: true
 ---
 
+```{r echo=FALSE}
+# rmarkdown::render("vignettes/comparison_2007-2012.Rmd", rmarkdown::html_document(pandoc_args = "--self-contained"))
+```
+
 ```{r }
 library(nlaR)
 ```
 
 ```{r map lakes}
-library(sp)
+library(sf)
 library(maps)
 
 par(mfrow = c(1, 2))
 
-dt <- tryCatch(nla_load(2007), error = function(e){ 
-        nla_get(2007)
-        nla_compile(2007)
-        nla_load(2007)}
-      )
+dt <- nla_load(2007)
 
-sp::coordinates(dt$SampledLakeInformation) <- ~ LON_DD + LAT_DD
+dt <- st_as_sf(dt$SampledLakeInformation, coords = c("LON_DD", "LAT_DD"), crs = 4326)
+
 map("usa")
+plot(dt['URBAN'], add = TRUE, reset = FALSE)
 title("NLA 2007")
-points(dt$SampledLakeInformation,
-       col = factor(dt$SampledLakeInformation$URBAN), cex = 0.5)
-axis(1); axis(2)
-
 
 dt <- nla_load(2012)
-sp::coordinates(dt$wide_siteinfo) <- ~ LON_DD83 + LAT_DD83
+dt <- st_as_sf(dt$wide_siteinfo, coords = c("LON_DD83", "LAT_DD83"), crs = 4326)
+
 map("usa")
+plot(dt['URBAN'], add = TRUE, reset = FALSE)
 title("NLA 2012")
-points(dt$wide_siteinfo,
-       col = factor(dt$wide_siteinfo$URBAN), cex = 0.5)
-axis(1); axis(2)
 ```

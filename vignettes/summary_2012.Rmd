@@ -5,7 +5,12 @@ date: "`r Sys.Date()`"
 output: 
   html_document:
     fig_caption: true
+    self_contained: true
 ---
+
+```{r echo=FALSE}
+# rmarkdown::render("vignettes/summary_2012.Rmd", rmarkdown::html_document(pandoc_args = "--self-contained"))
+```
 
 ```{r message=FALSE}
 library(dplyr)
@@ -16,11 +21,7 @@ library(nlaR)
 ```
 
 ```{r load_data}
-dt <- tryCatch(nla_load(2012), error = function(e){ 
-        nla_get(2012)
-        nla_compile(2012)
-        nla_load(2012)}
-      )
+dt <- nla_load(2012)
 ```
 
 ```{r }

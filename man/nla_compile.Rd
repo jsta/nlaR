@@ -4,10 +4,12 @@
 \alias{nla_compile}
 \title{Compile NLA data for on-disk storage}
 \usage{
-nla_compile(year)
+nla_compile(year, local_path)
 }
 \arguments{
 \item{year}{numeric choice of 2007 or 2012.}
+
+\item{local_path}{folder path to raw downloads from `nla_get`}
 }
 \value{
 rds

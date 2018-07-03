@@ -96,11 +96,7 @@
 <span class="kw">library</span>(purrr)
 
 <span class="kw">library</span>(nlaR)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dt &lt;-<span class="st"> </span><span class="kw">tryCatch</span>(<span class="kw"><a href="../reference/nla_load.html">nla_load</a></span>(<span class="dv">2012</span>), <span class="dt">error =</span> <span class="cf">function</span>(e){ 
-        <span class="kw"><a href="../reference/nla_get.html">nla_get</a></span>(<span class="dv">2012</span>)
-        <span class="kw"><a href="../reference/nla_compile.html">nla_compile</a></span>(<span class="dv">2012</span>)
-        <span class="kw"><a href="../reference/nla_load.html">nla_load</a></span>(<span class="dv">2012</span>)}
-      )</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dt &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nla_load.html">nla_load</a></span>(<span class="dv">2012</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tp &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(dt<span class="op">$</span>waterchem_wide, PTL_RESULT, UID) <span class="op">%&gt;%</span>
 <span class="st">      </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/join.html">left_join</a></span>(<span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(dt<span class="op">$</span>wide_siteinfo, AREA_HA, SITE_ID, UID)) <span class="op">%&gt;%</span>
 <span class="st">      </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(SITE_ID) <span class="op">%&gt;%</span>
