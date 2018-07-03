@@ -21,5 +21,4 @@ Suggests: knitr,
     sf,
     maps,
     R.rsp
-Remotes: ropenscilabs/skimr
 VignetteBuilder: R.rsp, knitr
