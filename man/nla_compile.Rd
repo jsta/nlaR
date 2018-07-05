@@ -4,10 +4,12 @@
 \alias{nla_compile}
 \title{Compile NLA data for on-disk storage}
 \usage{
-nla_compile(year, local_path)
+nla_compile(year, use_rappdirs, local_path)
 }
 \arguments{
 \item{year}{numeric choice of 2007 or 2012.}
+
+\item{use_rappdirs}{logical write files to operating system data directories at the location returned by \code{\link[rappdirs]{user_data_dir}}.}
 
 \item{local_path}{folder path to raw downloads from `nla_get`}
 }
@@ -16,9 +18,4 @@ rds
 }
 \description{
 Compile NLA data for on-disk storage
-}
-\examples{
-\dontrun{
-nla_compile(2012)
-}
 }

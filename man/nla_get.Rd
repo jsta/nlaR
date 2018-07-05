@@ -4,18 +4,18 @@
 \alias{nla_get}
 \title{Download NLA data from USEPA}
 \usage{
-nla_get(year, dest_folder = NA)
+nla_get(year, use_rappdirs = FALSE)
 }
 \arguments{
 \item{year}{numeric choice of 2007 or 2012.}
 
-\item{dest_folder}{file.path optional will default to the location returned by \code{\link[rappdirs]{user_data_dir}}.}
+\item{use_rappdirs}{logical write files to operating system data directories at the location returned by \code{\link[rappdirs]{user_data_dir}}.}
 }
 \description{
 Retrieves NLA flat files.
 }
 \examples{
-\dontrun{
+\donttest{
 nla_get(2012)
 }
 }

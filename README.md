@@ -28,10 +28,10 @@ library(nlaR)
 
 ### Retrieve data from EPA Website
 
-> Data is stored in the location returned by `rappdirs::user_data_dir()`
+> Turn on automated data storage at the location returned by `rappdirs::user_data_dir()`
 
 ``` r
-nla_get(2012)
+nla_get(2012, use_rappdirs = TRUE)
 ```
 
 ### Load data from local machine

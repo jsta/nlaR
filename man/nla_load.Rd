@@ -4,10 +4,14 @@
 \alias{nla_load}
 \title{Load NLA data into current R session}
 \usage{
-nla_load(year)
+nla_load(year, use_rappdirs = FALSE, source_folder = NA)
 }
 \arguments{
 \item{year}{numeric choice of 2007 or 2012.}
+
+\item{use_rappdirs}{logical write files to operating system data directories at the location returned by \code{\link[rappdirs]{user_data_dir}}.}
+
+\item{source_folder}{optional custom file.path to data directory}
 }
 \value{
 list
@@ -16,7 +20,8 @@ list
 Load NLA data into current R session
 }
 \examples{
-\dontrun{
-dt <- nla_load(2012)
+\donttest{
+source_folder <- nla_get(2012)
+dt <- nla_load(2012, source_folder = source_folder)
 }
 }

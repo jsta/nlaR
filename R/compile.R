@@ -3,22 +3,30 @@
 #'
 #' @param year numeric choice of 2007 or 2012.
 #' @param local_path folder path to raw downloads from `nla_get`
+#' @param use_rappdirs logical write files to operating system data directories at the location returned by \code{\link[rappdirs]{user_data_dir}}.
 #'
 #' @return rds
 #'
-#' @examples \dontrun{
-#' nla_compile(2012)
-#' }
-nla_compile <- function(year, local_path){
+nla_compile <- function(year, use_rappdirs, local_path){
 
   valid_year(year)
 
-  res <- nla_ingest(year, local_path)
+  if(use_rappdirs){
+    local_path <- nla_path()
+  }
+  res     <- nla_ingest(year, local_path)
 
-  outpath <- file.path(nla_path(), paste0("data_", year, ".rds"))
+  if(use_rappdirs){
+    outpath <- file.path(nla_path(), paste0("data_", year, ".rds"))
+  }else{
+    outpath <- file.path(local_path, paste0("data_", year, ".rds"))
+  }
 
   saveRDS(res, outpath, compress = "xz")
   message(paste0("NLA ", year, " compiled to ", outpath))
+
+
+  return(dirname(outpath))
 }
 
 nla_ingest <- function(year, local_path){
