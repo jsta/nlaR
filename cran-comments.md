@@ -12,3 +12,11 @@
 ## Reverse dependencies
 
 This is a new release, so there are no reverse dependencies.
+
+## Changes for this re-submission
+
+* More details provided about the NLA database in DESCRIPTION
+
+* All examples run without error or user intervention
+
+* Functions that write to disk use tempdir() by default
