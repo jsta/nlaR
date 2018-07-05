@@ -5,12 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>R interface to the National Lakes Assessment • nlaR</title>
+<title>Interface to the National Lakes Assessment • nlaR</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="R interface to the National Lakes Assessment">
-<meta property="og:description" content="R interface to the National Lakes Assessment.">
+<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Interface to the National Lakes Assessment">
+<meta property="og:description" content="Client for programmatic access to the 2007 and 2012 National 
+  Lakes Assessment database &lt;https://www.epa.gov/national-aquatic-resource-surveys/nla&gt; 
+  containing data for hundreds of lakes in the lower 48 states of the contiguous US.">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -29,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">nlaR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3</span>
       </span>
     </div>
 
@@ -58,6 +60,9 @@
       <a href="articles/summary_2012.html">Summary of 2012 Surveys</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -107,9 +112,9 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <h3 class="hasAnchor">
 <a href="#retrieve-data-from-epa-website" class="anchor"></a>Retrieve data from EPA Website</h3>
 <blockquote>
-<p>Data is stored in the location returned by <code><a href="http://www.rdocumentation.org/packages/rappdirs/topics/user_data_dir">rappdirs::user_data_dir()</a></code></p>
+<p>Turn on automated data storage at the location returned by <code><a href="http://www.rdocumentation.org/packages/rappdirs/topics/user_data_dir">rappdirs::user_data_dir()</a></code></p>
 </blockquote>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/nla_get.html">nla_get</a></span>(<span class="dv">2012</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/nla_get.html">nla_get</a></span>(<span class="dv">2012</span>, <span class="dt">use_rappdirs =</span> <span class="ot">TRUE</span>)</code></pre></div>
 </div>
 <div id="load-data-from-local-machine" class="section level3">
 <h3 class="hasAnchor">

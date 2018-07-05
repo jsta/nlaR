@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nlaR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3</span>
       </span>
     </div>
 
@@ -87,6 +87,9 @@
       <a href="../articles/summary_2012.html">Summary of 2012 Surveys</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -120,7 +123,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>nla_load</span>(<span class='no'>year</span>)</pre>
+    <pre class="usage"><span class='fu'>nla_load</span>(<span class='no'>year</span>, <span class='kw'>use_rappdirs</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>source_folder</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -128,6 +131,14 @@
     <tr>
       <th>year</th>
       <td><p>numeric choice of 2007 or 2012.</p></td>
+    </tr>
+    <tr>
+      <th>use_rappdirs</th>
+      <td><p>logical write files to operating system data directories at the location returned by <code><a href='http://www.rdocumentation.org/packages/rappdirs/topics/user_data_dir'>user_data_dir</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>source_folder</th>
+      <td><p>optional custom file.path to data directory</p></td>
     </tr>
     </table>
     
@@ -137,9 +148,7 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='no'>dt</span> <span class='kw'>&lt;-</span> <span class='fu'>nla_load</span>(<span class='fl'>2012</span>)
-<span class='co'># }</span></pre>
+    <pre class="examples"><div class='input'><span class='no'>source_folder</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='nla_get.html'>nla_get</a></span>(<span class='fl'>2012</span>)</div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-11/nla2012_algaltoxins_08192016.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-11/nla2012_atrazine_08192016.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-11/nla2012_bentcond_08232016.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-11/nla2012_wide_benthic_08232016.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-11/nla2012_bentmet.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-11/nla2012_benttaxa_wide_10272015.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-11/nla2012_chla_wide.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-12/nla2012_wide_phab_08232016_0.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-12/nla2012_wide_phabmet_10202016.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-12/nla2012_phytocnt_02122014.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-12/nla2012_phytotaxa_wide_10272015.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-12/nla2012_wide_profile_08232016.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-12/nla2012_secchi_08232016.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-12/nla2012_topsedhg_08192016.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-12/nla2012_wide_siteinfo_08232016.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-12/nla2012_waterchem_wide.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-12/nla2012_zoopcond_08192016.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-12/nla2012_zoopmets_08192016.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>A local copy of https://www.epa.gov/sites/production/files/2016-12/nla2012_zooptaxa_wide_10272015.csv already exists on disk</span></div><div class='output co'>#&gt; <span class='message'>NLA 2012 compiled to /tmp/Rtmpmq1KmP/data_2012.rds</span></div><div class='input'><span class='no'>dt</span> <span class='kw'>&lt;-</span> <span class='fu'>nla_load</span>(<span class='fl'>2012</span>, <span class='kw'>source_folder</span> <span class='kw'>=</span> <span class='no'>source_folder</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nlaR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3</span>
       </span>
     </div>
 
@@ -87,6 +87,9 @@
       <a href="../articles/summary_2012.html">Summary of 2012 Surveys</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -120,7 +123,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>nla_compile</span>(<span class='no'>year</span>, <span class='no'>local_path</span>)</pre>
+    <pre class="usage"><span class='fu'>nla_compile</span>(<span class='no'>year</span>, <span class='no'>use_rappdirs</span>, <span class='no'>local_path</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -128,6 +131,10 @@
     <tr>
       <th>year</th>
       <td><p>numeric choice of 2007 or 2012.</p></td>
+    </tr>
+    <tr>
+      <th>use_rappdirs</th>
+      <td><p>logical write files to operating system data directories at the location returned by <code><a href='http://www.rdocumentation.org/packages/rappdirs/topics/user_data_dir'>user_data_dir</a></code>.</p></td>
     </tr>
     <tr>
       <th>local_path</th>
@@ -140,10 +147,6 @@
     <p>rds</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'>nla_compile</span>(<span class='fl'>2012</span>)
-<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -151,9 +154,7 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
   </div>
 </div>
