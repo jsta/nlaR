@@ -5,7 +5,6 @@
 #' @param local_path folder path to raw downloads from `nla_get`
 #'
 #' @return rds
-#' @export
 #'
 #' @examples \dontrun{
 #' nla_compile(2012)
