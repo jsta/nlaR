@@ -2,7 +2,7 @@ Package: nlaR
 Title: Interface to the National Lakes Assessment
 Version: 0.3
 Authors@R: person("Joseph", "Stachelek", email = "stachel2@msu.edu", role = c("aut", "cre"))
-Description: Client for programmatic access and to the 2007 and 2012 National 
+Description: Client for programmatic access to the 2007 and 2012 National 
   Lakes Assessment database <https://www.epa.gov/national-aquatic-resource-surveys/nla> 
   containing data for hundreds of lakes in the lower 48 states of the contiguous US.
 Depends:
