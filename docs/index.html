@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">nlaR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
       </span>
     </div>
 
@@ -97,8 +97,8 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install nlaR from Github with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
-devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"jsta/nlaR"</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"jsta/nlaR"</span>)</a></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -106,7 +106,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <div id="load-package" class="section level3">
 <h3 class="hasAnchor">
 <a href="#load-package" class="anchor"></a>Load package</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(nlaR)</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(nlaR)</a></code></pre></div>
 </div>
 <div id="retrieve-data-from-epa-website" class="section level3">
 <h3 class="hasAnchor">
@@ -114,30 +114,30 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <blockquote>
 <p>Turn on automated data storage at the location returned by <code><a href="http://www.rdocumentation.org/packages/rappdirs/topics/user_data_dir">rappdirs::user_data_dir()</a></code></p>
 </blockquote>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/nla_get.html">nla_get</a></span>(<span class="dv">2012</span>, <span class="dt">use_rappdirs =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="reference/nla_get.html">nla_get</a></span>(<span class="dv">2012</span>, <span class="dt">use_rappdirs =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 </div>
 <div id="load-data-from-local-machine" class="section level3">
 <h3 class="hasAnchor">
 <a href="#load-data-from-local-machine" class="anchor"></a>Load data from local machine</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dt &lt;-<span class="st"> </span><span class="kw"><a href="reference/nla_load.html">nla_load</a></span>(<span class="dv">2012</span>)</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">dt &lt;-<span class="st"> </span><span class="kw"><a href="reference/nla_load.html">nla_load</a></span>(<span class="dv">2012</span>)</a></code></pre></div>
 </div>
 <div id="view-nla-tables" class="section level3">
 <h3 class="hasAnchor">
 <a href="#view-nla-tables" class="anchor"></a>View NLA tables</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(dt)
-<span class="co">#&gt;  [1] "algaltoxins"    "atrazine"       "bentcond"       "bentmet"       </span>
-<span class="co">#&gt;  [5] "benttaxa_wide"  "chla_wide"      "phytocnt"       "phytotaxa_wide"</span>
-<span class="co">#&gt;  [9] "secchi"         "topsedhg"       "waterchem_wide" "wide_benthic"  </span>
-<span class="co">#&gt; [13] "wide_phab"      "wide_phabmet"   "wide_profile"   "wide_siteinfo" </span>
-<span class="co">#&gt; [17] "zoopcond"       "zoopmets"       "zooptaxa_wide"</span>
-<span class="kw">head</span>(dt<span class="op">$</span>phytocnt)
-<span class="co">#&gt;   PUBLICATION_DATE  UID SAMPLE_TYPE TAXA_ID        PARAMETER   RESULT</span>
-<span class="co">#&gt; 1        2/12/2014 6160        PHYL    4075        BIOVOLUME 219.9113</span>
-<span class="co">#&gt; 2        2/12/2014 6160        PHYL    4075          DENSITY       25</span>
-<span class="co">#&gt; 3        2/12/2014 6160        PHYL    4075   INITIAL_VOLUME     1080</span>
-<span class="co">#&gt; 4        2/12/2014 6160        PHYL    4095 SUBSAMPLE_VOLUME      200</span>
-<span class="co">#&gt; 5        2/12/2014 6160        PHYL    4095   VOLUME_COUNTED       10</span>
-<span class="co">#&gt; 6        2/12/2014 6160        PHYL    4095       TOTAL_AREA 283.5287</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">names</span>(dt)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt;  [1] "algaltoxins"    "atrazine"       "bentcond"       "bentmet"       </span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;  [5] "benttaxa_wide"  "chla_wide"      "phytocnt"       "phytotaxa_wide"</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;  [9] "secchi"         "topsedhg"       "waterchem_wide" "wide_benthic"  </span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; [13] "wide_phab"      "wide_phabmet"   "wide_profile"   "wide_siteinfo" </span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; [17] "zoopcond"       "zoopmets"       "zooptaxa_wide"</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="kw">head</span>(dt<span class="op">$</span>phytocnt)</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;   PUBLICATION_DATE  UID SAMPLE_TYPE TAXA_ID        PARAMETER   RESULT</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 1        2/12/2014 6160        PHYL    4075        BIOVOLUME 219.9113</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; 2        2/12/2014 6160        PHYL    4075          DENSITY       25</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; 3        2/12/2014 6160        PHYL    4075   INITIAL_VOLUME     1080</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt; 4        2/12/2014 6160        PHYL    4095 SUBSAMPLE_VOLUME      200</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; 5        2/12/2014 6160        PHYL    4095   VOLUME_COUNTED       10</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; 6        2/12/2014 6160        PHYL    4095       TOTAL_AREA 283.5287</span></a></code></pre></div>
 </div>
 </div>
 <div id="more-examples" class="section level2">
@@ -165,6 +165,8 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=nlaR">https://​cloud.r-project.org/​package=nlaR</a>
+</li>
 <li>Browse source code at <br><a href="https://github.com/jsta/nlaR">https://​github.com/​jsta/​nlaR</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/jsta/nlaR/issues">https://​github.com/​jsta/​nlaR/​issues</a>

@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nlaR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
       </span>
     </div>
 
@@ -85,7 +85,7 @@
       <h1>Compare 2007 and 2012 lake condition</h1>
                         <h4 class="author">Joseph Stachelek</h4>
             
-            <h4 class="date">2018-07-05</h4>
+            <h4 class="date">2019-01-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jsta/nlaR/blob/master/vignettes/comparison_2007-2012.Rmd"><code>vignettes/comparison_2007-2012.Rmd</code></a></small>
       <div class="hidden name"><code>comparison_2007-2012.Rmd</code></div>
@@ -94,27 +94,27 @@
 
     
     
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(nlaR)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sf)</code></pre></div>
-<pre><code>## Linking to GEOS 3.6.2, GDAL 2.2.3, proj.4 4.9.3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(maps)
-
-<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
-
-dt &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nla_load.html">nla_load</a></span>(<span class="dv">2007</span>)
-
-dt &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/sf/topics/st_as_sf">st_as_sf</a></span>(dt<span class="op">$</span>SampledLakeInformation, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">"LON_DD"</span>, <span class="st">"LAT_DD"</span>), <span class="dt">crs =</span> <span class="dv">4326</span>)
-
-<span class="kw"><a href="http://www.rdocumentation.org/packages/maps/topics/map">map</a></span>(<span class="st">"usa"</span>)
-<span class="kw"><a href="http://www.rdocumentation.org/packages/sf/topics/plot">plot</a></span>(dt[<span class="st">'URBAN'</span>], <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">reset =</span> <span class="ot">FALSE</span>)
-<span class="kw">title</span>(<span class="st">"NLA 2007"</span>)
-
-dt &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nla_load.html">nla_load</a></span>(<span class="dv">2012</span>)
-dt &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/sf/topics/st_as_sf">st_as_sf</a></span>(dt<span class="op">$</span>wide_siteinfo, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">"LON_DD83"</span>, <span class="st">"LAT_DD83"</span>), <span class="dt">crs =</span> <span class="dv">4326</span>)
-
-<span class="kw"><a href="http://www.rdocumentation.org/packages/maps/topics/map">map</a></span>(<span class="st">"usa"</span>)
-<span class="kw"><a href="http://www.rdocumentation.org/packages/sf/topics/plot">plot</a></span>(dt[<span class="st">'URBAN'</span>], <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">reset =</span> <span class="ot">FALSE</span>)
-<span class="kw">title</span>(<span class="st">"NLA 2012"</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(nlaR)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(sf)</a></code></pre></div>
+<pre><code>## Linking to GEOS 3.6.2, GDAL 2.2.3, PROJ 4.9.3</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(maps)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">dt &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nla_load.html">nla_load</a></span>(<span class="dv">2007</span>)</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">dt &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/sf/topics/st_as_sf">st_as_sf</a></span>(dt<span class="op">$</span>SampledLakeInformation, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">"LON_DD"</span>, <span class="st">"LAT_DD"</span>), <span class="dt">crs =</span> <span class="dv">4326</span>)</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="kw"><a href="http://www.rdocumentation.org/packages/maps/topics/map">map</a></span>(<span class="st">"usa"</span>)</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="kw"><a href="http://www.rdocumentation.org/packages/sf/topics/plot">plot</a></span>(dt[<span class="st">'URBAN'</span>], <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">reset =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="kw">title</span>(<span class="st">"NLA 2007"</span>)</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">dt &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nla_load.html">nla_load</a></span>(<span class="dv">2012</span>)</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">dt &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/sf/topics/st_as_sf">st_as_sf</a></span>(dt<span class="op">$</span>wide_siteinfo, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">"LON_DD83"</span>, <span class="st">"LAT_DD83"</span>), <span class="dt">crs =</span> <span class="dv">4326</span>)</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="kw"><a href="http://www.rdocumentation.org/packages/maps/topics/map">map</a></span>(<span class="st">"usa"</span>)</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="kw"><a href="http://www.rdocumentation.org/packages/sf/topics/plot">plot</a></span>(dt[<span class="st">'URBAN'</span>], <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">reset =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="kw">title</span>(<span class="st">"NLA 2012"</span>)</a></code></pre></div>
 <p><img src="comparison_2007-2012_files/figure-html/map%20lakes-1.png" width="700"></p>
   </div>
 
