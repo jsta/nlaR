@@ -13,6 +13,7 @@ nla_compile <- function(year, use_rappdirs, local_path){
 
   if(use_rappdirs){
     local_path <- nla_path()
+    dir.create(local_path, showWarnings = FALSE)
   }
   res     <- nla_ingest(year, local_path)
 
