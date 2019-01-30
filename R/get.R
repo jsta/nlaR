@@ -9,11 +9,12 @@
 #' @param use_rappdirs logical write files to operating system data directories at the location returned by \code{\link[rappdirs]{user_data_dir}}.
 #' @param year numeric choice of 2007 or 2012.
 #' @param local_path folder path to raw downloads from `nla_get`
+#' @inheritParams base::saveRDS
 #'
 #' @examples \donttest{
 #' nla_get(2012)
 #' }
-nla_get <- function(year, use_rappdirs = FALSE, local_path = tempdir()){
+nla_get <- function(year, use_rappdirs = FALSE, local_path = tempdir(), compress = "xz"){
 
   valid_year(year)
 
@@ -71,5 +72,5 @@ nla_get <- function(year, use_rappdirs = FALSE, local_path = tempdir()){
                                         file.path(local_path, x))))
   }
 
-  invisible(nla_compile(year, use_rappdirs, local_path))
+  invisible(nla_compile(year, use_rappdirs, local_path, compress = compress))
 }
