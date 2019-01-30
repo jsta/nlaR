@@ -4,7 +4,7 @@
 \alias{nla_compile}
 \title{Compile NLA data for on-disk storage}
 \usage{
-nla_compile(year, use_rappdirs, local_path)
+nla_compile(year, use_rappdirs, local_path, compress = "xz")
 }
 \arguments{
 \item{year}{numeric choice of 2007 or 2012.}
@@ -12,6 +12,11 @@ nla_compile(year, use_rappdirs, local_path)
 \item{use_rappdirs}{logical write files to operating system data directories at the location returned by \code{\link[rappdirs]{user_data_dir}}.}
 
 \item{local_path}{folder path to raw downloads from `nla_get`}
+
+\item{compress}{a logical specifying whether saving to a named file is
+    to use \code{"gzip"} compression, or one of \code{"gzip"},
+    \code{"bzip2"} or \code{"xz"} to indicate the type of compression to
+    be used.  Ignored if \code{file} is a connection.}
 }
 \value{
 rds
