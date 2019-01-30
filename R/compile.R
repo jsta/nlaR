@@ -19,9 +19,9 @@ nla_compile <- function(year, use_rappdirs, local_path, compress = "xz"){
   message(paste0("NLA ", year, " compiled to ", outpath))
 
   tryCatch(res <- readRDS(outpath), error  = function(e)
-    stop("Error in data compilation."))
-  if(names(res) == 0){
-    stop("Error in data compilation.")
+    stop("Error in NLA data object compilation. Try adjusting compress parameter."))
+  if(length(names(res)) == 0){
+    stop("Error in NLA data object. Object is 'empty'.")
   }
 
   return(dirname(outpath))
