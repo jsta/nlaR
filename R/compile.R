@@ -18,6 +18,12 @@ nla_compile <- function(year, use_rappdirs, local_path, compress = "xz"){
   saveRDS(res, outpath, compress = compress)
   message(paste0("NLA ", year, " compiled to ", outpath))
 
+  tryCatch(res <- readRDS(outpath), error  = function(e)
+    stop("Error in data compilation."))
+  if(names(res) == 0){
+    stop("Error in data compilation.")
+  }
+
   return(dirname(outpath))
 }
 
