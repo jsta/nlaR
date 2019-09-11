@@ -4,6 +4,7 @@
 \name{nlaR-package}
 \alias{nlaR-package}
 \alias{nla}
+\alias{nlaR}
 \title{R interface to the National Lakes Assessment}
 \description{
 R interface to the National Lakes Assessment
