@@ -4,8 +4,7 @@
 \alias{nla_get}
 \title{Download NLA data from USEPA}
 \usage{
-nla_get(year, use_rappdirs = FALSE, local_path = tempdir(),
-  compress = "xz")
+nla_get(year, use_rappdirs = FALSE, local_path = tempdir(), compress = "xz")
 }
 \arguments{
 \item{year}{numeric choice of 2007 or 2012.}

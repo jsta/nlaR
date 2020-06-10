@@ -21,7 +21,7 @@ Load NLA data into current R session
 }
 \examples{
 \donttest{
-source_folder <- nla_get(2012)
-dt <- nla_load(2012, source_folder = source_folder)
+# nla_get(2012, use_rappdirs = TRUE)
+dt <- nla_load(2012, use_rappdirs = TRUE)
 }
 }
