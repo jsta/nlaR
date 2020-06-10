@@ -9,8 +9,8 @@
 #' @param source_folder optional custom file.path to data directory
 #'
 #' @examples \donttest{
-#' source_folder <- nla_get(2012)
-#' dt <- nla_load(2012, source_folder = source_folder)
+#' # nla_get(2012, use_rappdirs = TRUE)
+#' dt <- nla_load(2012, use_rappdirs = TRUE)
 #' }
 nla_load <- function(year, use_rappdirs = FALSE, source_folder = NA){
   valid_year(year)
