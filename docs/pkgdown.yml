@@ -1,7 +1,8 @@
-pandoc: 2.3.1
-pkgdown: 1.0.0
+pandoc: '2.12'
+pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   comparison_2007-2012: comparison_2007-2012.html
   summary_2012: summary_2012.html
+last_built: 2021-08-03T13:46Z
 

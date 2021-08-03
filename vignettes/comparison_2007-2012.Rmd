@@ -1,6 +1,6 @@
 ---
 title: "Compare 2007 and 2012 lake condition"
-author: "Joseph Stachelek"
+author: "Jemma Stachelek"
 date: "`r Sys.Date()`"
 output: 
   html_document:
@@ -22,6 +22,7 @@ library(maps)
 
 par(mfrow = c(1, 2))
 
+# nla_get(2007, use_rappdirs=TRUE)
 dt <- nla_load(2007)
 
 dt <- st_as_sf(dt$SampledLakeInformation, coords = c("LON_DD", "LAT_DD"), crs = 4326)
@@ -30,6 +31,7 @@ map("usa")
 plot(dt['URBAN'], add = TRUE, reset = FALSE)
 title("NLA 2007")
 
+# nla_get(2012, use_rappdirs=TRUE)
 dt <- nla_load(2012)
 dt <- st_as_sf(dt$wide_siteinfo, coords = c("LON_DD83", "LAT_DD83"), crs = 4326)
 

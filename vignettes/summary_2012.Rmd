@@ -1,6 +1,6 @@
 ---
 title: "Summary of 2012 Surveys"
-author: "Joseph Stachelek"
+author: "Jemma Stachelek"
 date: "`r Sys.Date()`"
 output: 
   html_document:
