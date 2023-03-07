@@ -1,5 +1,9 @@
 
-nla_path <- function() file.path(rappdirs::user_data_dir(), "nlaR")
+nla_path <- function(){
+  res <- file.path(rappdirs::user_data_dir(), "nlaR")
+  dir.create(res, showWarnings = FALSE)
+  res
+}
 
 get_if_not_exists <- function(url, destfile){
   if(!file.exists(destfile)){
