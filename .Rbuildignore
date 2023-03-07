@@ -10,3 +10,4 @@ vignettes/comparison_2007-2012.Rmd
 ^docs$
 ^cran-comments\.md$
 .github
+README.html
