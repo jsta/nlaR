@@ -18,6 +18,7 @@ test_that("data objects are correct dimensions", {
   skip_on_ci()
 
   nla <- nla_load(2012, source_folder = nla_get(2012))
-  print(names(nla))
+  # print(class(nla))
+  # print(names(nla))
   testthat::expect_true("chla_wide" %in% names(nla))
 })
