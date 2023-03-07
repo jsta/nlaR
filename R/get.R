@@ -64,9 +64,10 @@ nla_get <- function(year, use_rappdirs = FALSE, local_path = tempdir(), compress
       "nla2012_topsedhg_08192016.csv",
       "nla2012_wide_siteinfo_08232016.csv",
       "nla2012_waterchem_wide.csv",
-      "nla2012_zoopcond_08192016.csv",
-      "nla2012_zoopmets_08192016.csv",
-      "nla2012_zooptaxa_wide_10272015.csv")
+      "nla2012_zoopcond_08192016.csv"#,
+      # "nla2012_zoopmets_08192016.csv",
+      # "nla2012_zooptaxa_wide_10272015.csv"
+      )
 
     invisible(lapply(files, function(x) get_if_not_exists(paste0(baseurl, x),
                                         file.path(local_path, x))))
