@@ -19,6 +19,6 @@ test_that("data objects are correct dimensions", {
   skip_on_travis()
   skip_on_appveyor()
 
-  nla <- nla_load(2012, use_rappdirs = TRUE)
+  nla <- nla_load(2012)
   expect_equal("chla_wide" %in% names(nla), TRUE)
 })
