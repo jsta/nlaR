@@ -8,7 +8,7 @@
 #' @param use_rappdirs logical write files to operating system data directories at the location returned by \code{\link[rappdirs]{user_data_dir}}.
 #' @param source_folder optional custom file.path to data directory
 #'
-#' @examples \donttest{
+#' @examples \dontrun{
 #' # nla_get(2012, use_rappdirs = TRUE)
 #' dt <- nla_load(2012, use_rappdirs = TRUE)
 #' }
