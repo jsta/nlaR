@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![CRAN status](http://www.r-pkg.org/badges/version/nlaR)](https://cran.r-project.org/package=nlaR)
-[![Travis-CI Build Status](https://travis-ci.org/jsta/nlaR.svg?branch=master)](https://travis-ci.org/jsta/nlaR)
+[![R-CMD-check](https://github.com/jsta/nlaR/actions/workflows/check.yml/badge.svg)](https://github.com/jsta/nlaR/actions/workflows/check.yml)
 
 The goal of nlaR is to provide an R interface to the National Lakes Assessment data. At this point it serves either the 2007 or 2012 data (see examples below).
 
