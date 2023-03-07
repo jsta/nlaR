@@ -20,7 +20,7 @@ list
 Load NLA data into current R session
 }
 \examples{
-\donttest{
+\dontrun{
 # nla_get(2012, use_rappdirs = TRUE)
 dt <- nla_load(2012, use_rappdirs = TRUE)
 }

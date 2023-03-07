@@ -2,8 +2,7 @@ context("load")
 
 test_that("load fails well", {
   skip_on_cran()
-  skip_on_travis()
-  skip_on_appveyor()
+  skip_on_ci()
 
   # resolve issue #6
   tdir <- tempdir()
@@ -16,9 +15,9 @@ test_that("load fails well", {
 
 test_that("data objects are correct dimensions", {
   skip_on_cran()
-  skip_on_travis()
-  skip_on_appveyor()
+  skip_on_ci()
 
   nla <- nla_load(2012, source_folder = nla_get(2012))
-  expect_equal("chla_wide" %in% names(nla), TRUE)
+  print(names(nla))
+  testthat::expect_true("chla_wide" %in% names(nla))
 })
