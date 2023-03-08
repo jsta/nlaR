@@ -3,7 +3,7 @@
 
 # nlaR
 
-[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![CRAN
 status](http://www.r-pkg.org/badges/version/nlaR)](https://cran.r-project.org/package=nlaR)
 [![R-CMD-check](https://github.com/jsta/nlaR/actions/workflows/check.yml/badge.svg)](https://github.com/jsta/nlaR/actions/workflows/check.yml)
@@ -65,7 +65,7 @@ head(dt$phytocnt)
 
 ## More Examples
 
-See [vignettes](https://jsta.github.io/nlaR/articles).
+See [vignettes](https://jsta.github.io/nlaR/articles/).
 
 ## References
 
